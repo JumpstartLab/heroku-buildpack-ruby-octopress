@@ -578,7 +578,7 @@ params = CGI.parse(uri.query || "")
 
   def generate_site
     puts "Building site"
-    run("env PATH=$PATH bundle exec rake generate 2>&1")
+    pipe("env PATH=$PATH bundle exec rake generate 2>&1")
     unless $? == 0
       error "Failed to generate site."
     end
