@@ -8,6 +8,12 @@ require "language_pack"
 
 puts "Hello from the BuildPack"
 puts "ARGV: #{ARGV.inspect}"
+env_dir = ARGV[2]
+puts "env_dir: #{env_dir}"
+ls = `ls #{env_dir}`
+puts "ls: #{ls.inspect}"
+redis = `cat #{env_dir}/REDIS_TO_GO_URL`
+puts "redis url: #{redis}"
 
 if pack = LanguagePack.detect(ARGV[0], ARGV[1])
   pack.log("compile") do
