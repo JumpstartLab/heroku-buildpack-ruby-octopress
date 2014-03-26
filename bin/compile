@@ -8,8 +8,9 @@ require "language_pack"
 
 puts "Hello from the BuildPack"
 redis_url = `cat #{ARGV[2]}/REDISTOGO_URL`.strip
-`REDISTOGO_URL='#{redis_url}'`
-puts "redis url: #{ENV['REDISTOGO_URL']}"
+puts "read redis url: #{redis_url}"
+puts `REDISTOGO_URL='#{redis_url}'`
+puts "env redis url: #{ENV['REDISTOGO_URL']}"
 
 if pack = LanguagePack.detect(ARGV[0], ARGV[1])
   pack.log("compile") do
